@@ -1,0 +1,2 @@
+import { useEffect, useState } from 'react'; import { HomePage } from './pages/HomePage'; import { BoardPage } from './pages/BoardPage';
+export default function App() { const [hash,setHash]=useState(location.hash); useEffect(()=>{ const onHash=()=>setHash(location.hash); addEventListener('hashchange',onHash); return ()=>removeEventListener('hashchange',onHash); },[]); const board=hash.startsWith('#board/')?hash.split('/')[1]:null; return board?<BoardPage board={board}/>:<HomePage/>; }
