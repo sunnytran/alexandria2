@@ -17,20 +17,21 @@ export function PostComposer({
         onClose();
       }}
     >
+      <div className="composerHeader"><strong>Create Post</strong><button type="button" onClick={onClose} aria-label="Close">×</button></div>
       <textarea
         autoFocus
-        placeholder="Write something..."
+        placeholder="Post text..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
       <div className="composerFooter">
-        <input type="file" />
+        <label className="fileButton">Choose File<input type="file" /></label><span className="fileStatus">No file chosen</span>
         <div>
           <button type="button" className="button secondary" onClick={onClose}>
-            cancel
+            close
           </button>{" "}
           <button className="button" type="submit">
-            publish
+            post
           </button>
         </div>
       </div>

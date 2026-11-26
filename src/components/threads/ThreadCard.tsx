@@ -1,8 +1,8 @@
 import type { Thread } from "../../types/thread";
 import { ThreadMeta } from "./ThreadMeta";
-export function ThreadCard({ thread }: { thread: Thread }) {
+export function ThreadCard({ thread, layout = "home" }: { thread: Thread; layout?: "home" | "board" }) {
   return (
-    <article className="threadCard">
+    <article className={`threadCard ${layout}`}>
       {thread.image ? (
         <img className="thumb" src={thread.image} alt="" />
       ) : (
@@ -15,8 +15,9 @@ export function ThreadCard({ thread }: { thread: Thread }) {
         {thread.description && (
           <p className="threadDescription">{thread.description}</p>
         )}
-        <ThreadMeta thread={thread} />
+        <ThreadMeta thread={thread} layout={layout} />
       </div>
+      <time className="threadTime">{thread.timestamp}</time>
     </article>
   );
 }
